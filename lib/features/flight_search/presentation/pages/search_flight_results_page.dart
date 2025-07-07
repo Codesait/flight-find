@@ -1,6 +1,7 @@
 import 'package:flight_search/components/shared/gap.dart';
 import 'package:flight_search/components/shared/page_indicator.dart';
 import 'package:flight_search/components/shared/pageview.dart';
+import 'package:flight_search/utils/utile_functions.dart';
 import 'package:flutter/material.dart';
 
 class SearchFlightResultsPage extends StatefulWidget {
@@ -12,43 +13,6 @@ class SearchFlightResultsPage extends StatefulWidget {
   @override
   State<SearchFlightResultsPage> createState() =>
       _SearchFlightResultsPageState();
-
-  static String _formatDate(DateTime date) {
-    return '${_monthShort(date.month)} ${date.day}, ${date.year}';
-  }
-
-  static String _monthShort(int month) {
-    const months = [
-      '',
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    return months[month];
-  }
-
-  static String _formatTime(dynamic time) {
-    if (time == null) return '-';
-    if (time is String && time.length >= 16 && time.contains('T')) {
-      // ISO string
-      final dt = DateTime.tryParse(time);
-      if (dt != null) {
-        final hour = dt.hour % 12 == 0 ? 12 : dt.hour % 12;
-        final ampm = dt.hour >= 12 ? 'PM' : 'AM';
-        return '$hour:${dt.minute.toString().padLeft(2, '0')} $ampm';
-      }
-    }
-    return time.toString();
-  }
 }
 
 class _SearchFlightResultsPageState extends State<SearchFlightResultsPage> {
@@ -101,7 +65,7 @@ class _SearchFlightResultsPageState extends State<SearchFlightResultsPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              '${departureDate != null ? SearchFlightResultsPage._formatDate(departureDate) : '-'} • $passengers Adult${passengers == 1 ? '' : 's'}',
+              '${departureDate != null ? UtileFunctions.formatDate(departureDate) : '-'} • $passengers Adult${passengers == 1 ? '' : 's'}',
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -158,11 +122,11 @@ class _SearchFlightResultsPageState extends State<SearchFlightResultsPage> {
                                                   ? 'Non-stop'
                                                   : '${flight.stops} Stop',
                                           departureTime:
-                                              SearchFlightResultsPage._formatTime(
+                                              UtileFunctions.formatTime(
                                                 flight.departureTime,
                                               ),
                                           arrivalTime:
-                                              SearchFlightResultsPage._formatTime(
+                                              UtileFunctions.formatTime(
                                                 flight.arrivalTime,
                                               ),
                                           duration: flight.duration ?? '-',
@@ -457,7 +421,7 @@ class _FlightCard extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Colors.black.withValues(
-                  alpha:   0.2,
+                    alpha: 0.2,
                   ), // Dark overlay for readability
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(16),
