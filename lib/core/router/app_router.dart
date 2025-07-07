@@ -1,6 +1,7 @@
 import 'package:flight_search/features/flight_search/presentation/pages/flight_detail_page.dart';
 import 'package:flight_search/features/flight_search/presentation/pages/home.dart';
 import 'package:flight_search/features/flight_search/presentation/pages/search_flight_results_page.dart';
+import 'package:flight_search/features/flight_search/presentation/pages/search_flights.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -70,6 +71,22 @@ class AppRouterConfig {
       ),
 
       /**
+       ** search flight page 
+       */
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: '/search',
+        name: SearchFlights.route,
+        pageBuilder: (context, state) {
+          return buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: const SearchFlights(),
+          );
+        },
+      ),
+
+      /**
        ** flight result page 
        */
       GoRoute(
@@ -80,7 +97,9 @@ class AppRouterConfig {
           return buildPageWithDefaultTransition(
             context: context,
             state: state,
-            child: const SearchFlightResultsPage(),
+            child: SearchFlightResultsPage(
+              flightResult: state.extra as Map<String, dynamic>?,
+            ),
           );
         },
       ),
@@ -99,11 +118,7 @@ class AppRouterConfig {
             child: const FlightDetailPage(),
           );
         },
-
-
       ),
-
-
     ],
     debugLogDiagnostics: true,
   );

@@ -1,0 +1,67 @@
+{
+  "flights": [
+    {
+      "flightNumber": "FL101",
+      "airlineName": "AirConnect",
+      "airlineLogo": "https://placehold.co/50x50/000000/FFFFFF?text=AC",
+      "departureCity": "New York",
+      "arrivalCity": "Los Angeles",
+      "departureTime": "2025-07-10T08:00:00Z",
+      "arrivalTime": "2025-07-10T11:30:00Z",
+      "price": 250.00,
+      "aircraft": "Boeing 737",
+      "duration": "3h 30m",
+      "stops": 0,
+      "details": "Non-stop flight with complimentary snacks."
+    },
+    {
+      "flightNumber": "UA205",
+      "airlineName": "United Airlines",
+      "airlineLogo": "https://placehold.co/50x50/000000/FFFFFF?text=UA",
+      "departureCity": "New York",
+      "arrivalCity": "Los Angeles",
+      "departureTime": "2025-07-10T09:00:00Z",
+      "arrivalTime": "2025-07-10T13:00:00Z",
+      "price": 300.00,
+      "aircraft": "Airbus A320",
+      "duration": "4h 00m",
+      "stops": 1,
+      "details": "One stop in Chicago. In-flight entertainment available."
+    },
+    {
+      "flightNumber": "DL300",
+      "airlineName": "Delta Airlines",
+      "airlineLogo": "https://placehold.co/50x50/000000/FFFFFF?text=DL",
+      "departureCity": "Los Angeles",
+      "arrivalCity": "New York",
+      "departureTime": "2025-07-11T14:00:00Z",
+      "arrivalTime": "2025-07-11T20:00:00Z",
+      "price": 280.00,
+      "aircraft": "Boeing 777",
+      "duration": "6h 00m",
+      "stops": 0,
+      "details": "Direct flight with premium economy option."
+    },
+    {
+      "flightNumber": "SW400",
+      "airlineName": "Southwest Airlines",
+      "airlineLogo": "https://placehold.co/50x50/000000/FFFFFF?text=SW",
+      "departureCity": "New York",
+      "arrivalCity": "Dallas",
+      "departureTime": "2025-07-12T07:00:00Z",
+      "arrivalTime": "2025-07-12T10:00:00Z",
+      "price": 180.00,
+      "aircraft": "Boeing 737",
+      "duration": "3h 00m",
+      "stops": 0,
+      "details": "Non-stop flight."
+    }
+  ],
+  "cities": [
+    {"name": "New York", "code": "NYC"},
+    {"name": "Los Angeles", "code": "LAX"},
+    {"name": "Chicago", "code": "ORD"},
+    {"name": "Dallas", "code": "DFW"},
+    {"name": "Houston", "code": "IAH"}
+  ]
+}
