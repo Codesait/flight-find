@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                       pageController: _pageController,
                       pageSnapping: true,
                       onPageChange: setPage,
-                      autoScroll: false,
+                      autoScroll: true,
                       autoScrollDuration: const Duration(seconds: 5),
                       pages: [
                         _OnboardIntro(

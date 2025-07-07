@@ -1,6 +1,6 @@
 import 'package:flight_search/components/smartAnimatedMenu/controller.dart';
 import 'package:flight_search/components/shared/custom_text.dart';
-import 'package:flight_search/features/flight_search/presentation/widgets/search_flights.dart';
+import 'package:flight_search/features/flight_search/presentation/pages/search_flights.dart';
 import 'package:flight_search/utils/mediaquery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -177,12 +177,15 @@ class _MenuListState extends State<_MenuList> {
                     ),
                     title: TextView(text: item['title']! as String),
                     onTap: () {
-                      context.pushNamed(item['screen'] as String);
-                      controllerProvider.toggleModalStatus(context);
+                      if (item['screen'] != null) {
+                        context.pushNamed(item['screen'] as String);
+                        controllerProvider.toggleModalStatus(context);
+                        return;
+                      }
 
-                      // controllerProvider.setPage(
-                      //   item['menuType']! as MenuPageState,
-                      // );
+                      controllerProvider.setPage(
+                        item['menuType']! as MenuPageState,
+                      );
                     },
                   );
                 },

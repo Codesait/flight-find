@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flight_search/components/smartAnimatedMenu/smart_menu.dart';
 import 'package:flight_search/components/shared/custom_text.dart';
 import 'package:flight_search/core/router/app_router.dart';
-import 'package:flight_search/features/flight_search/presentation/widgets/search_flights.dart';
+import 'package:flight_search/features/flight_search/presentation/pages/search_flights.dart';
 import 'package:flight_search/utils/mediaquery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
