@@ -1,19 +1,21 @@
 import 'package:flight_search/components/smartAnimatedMenu/controller.dart';
 import 'package:flight_search/components/shared/custom_text.dart';
+import 'package:flight_search/features/flight_search/presentation/widgets/search_flights.dart';
 import 'package:flight_search/utils/mediaquery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rive_animated_icon/rive_animated_icon.dart';
 
 class SmartMenuWidget extends ConsumerStatefulWidget {
   const SmartMenuWidget({super.key});
 
   @override
-  SmartMenuWidgetState createState() => SmartMenuWidgetState();
+  CreateMenuWidgetState createState() => CreateMenuWidgetState();
 }
 
-class SmartMenuWidgetState extends ConsumerState<SmartMenuWidget>
+class CreateMenuWidgetState extends ConsumerState<SmartMenuWidget>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
@@ -139,16 +141,19 @@ class _MenuListState extends State<_MenuList> {
         'icon': RiveIcon.search,
         'title': 'Search for flights',
         'menuType': MenuPageState.flights,
+        'screen': SearchFlights.route,
       },
       {
         'icon': RiveIcon.home2,
         'title': 'Book a hotel',
         'menuType': MenuPageState.hotels,
+        'screen': null,
       },
       {
         'icon': RiveIcon.gallery,
         'title': 'Explore',
         'menuType': MenuPageState.explore,
+        'screen': null,
       },
     ];
 
@@ -167,14 +172,18 @@ class _MenuListState extends State<_MenuList> {
                       width: 30,
                       loopAnimation: widget.getLoopAnimation,
                       riveIcon: item['icon']! as RiveIcon,
-                      color: Colors.green,
+                      color: Colors.blue,
                       strokeWidth: 3,
                     ),
                     title: TextView(text: item['title']! as String),
-                    onTap:
-                        () => controllerProvider.setPage(
-                          item['menuType']! as MenuPageState,
-                        ),
+                    onTap: () {
+                      context.pushNamed(item['screen'] as String);
+                      controllerProvider.toggleModalStatus(context);
+
+                      // controllerProvider.setPage(
+                      //   item['menuType']! as MenuPageState,
+                      // );
+                    },
                   );
                 },
               );

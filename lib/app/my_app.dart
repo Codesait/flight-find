@@ -1,4 +1,4 @@
-import 'package:flight_search/core/router/appp_router.dart';
+import 'package:flight_search/core/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {

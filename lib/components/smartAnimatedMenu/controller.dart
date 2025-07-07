@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flight_search/components/smartAnimatedMenu/smart_menu.dart';
 import 'package:flight_search/components/shared/custom_text.dart';
-import 'package:flight_search/core/router/appp_router.dart';
+import 'package:flight_search/core/router/app_router.dart';
 import 'package:flight_search/features/flight_search/presentation/widgets/search_flights.dart';
 import 'package:flight_search/utils/mediaquery.dart';
 import 'package:flutter/material.dart';
@@ -85,8 +85,9 @@ class CreateMenuController extends ChangeNotifier {
       Future.delayed(const Duration(milliseconds: 500), () {
         animationController.reset();
         notifyListeners();
+      }).whenComplete(() {
+        _hideOverlay();
       });
-      _hideOverlay();
     }
     notifyListeners();
   }
@@ -132,6 +133,7 @@ class CreateMenuController extends ChangeNotifier {
   /// Animates the modal to the collapsed state.
   void fullyCollapseModal() {
     animationController.animateTo(0, curve: curve, duration: duration);
+    notifyListeners();
   }
 
   MenuPageState _page = MenuPageState.flights;

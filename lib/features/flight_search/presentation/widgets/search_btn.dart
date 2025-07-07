@@ -35,7 +35,7 @@ class SearchButton extends ConsumerWidget {
             },
             icon: Icon(
               controllerProvider.isModalOpen ? Icons.close : Icons.search,
-              size: 30,
+              size: 20,
               color: Colors.black,
             ),
           ),

@@ -37,8 +37,9 @@ class TextView extends StatelessWidget {
       child: Text(
         text,
         key: key,
-        style: textStyle ??
-            GoogleFonts.outfit(
+        style:
+            textStyle ??
+            GoogleFonts.plusJakartaSans(
               fontSize: fontSize != null ? fontSize! : 14,
               fontWeight: fontWeight ?? FontWeight.w400,
               color: color ?? Colors.black,
